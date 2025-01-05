@@ -12,6 +12,12 @@
                     <form method="POST" action="{{ route('users.store') }}">
                         @csrf
 
+                        @if ($errors->has('email'))
+                            <div class="mt-4 text-red-500 text-sm">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
+
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 {{ __('Nome') }}

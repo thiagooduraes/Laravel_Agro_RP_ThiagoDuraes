@@ -35,6 +35,11 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
+        $existingUser = User::where('email', $request->email)->first();
+        if ($existingUser) {
+            return back()->withErrors(['email' => 'Este email já está cadastrado.']);
+        }
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,

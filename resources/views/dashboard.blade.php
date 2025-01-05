@@ -13,6 +13,11 @@
                                 {{ __('Usuários') }}
                             </a>
                         </div>
+                        <div class="mt-4">
+                            <a href="{{ route('github.index') }}" class="text-gray-900 dark:text-gray-100 hover:underline">
+                                {{ __('GitHub') }}
+                            </a>
+                        </div>
                     </div>
             </div>
     </div>

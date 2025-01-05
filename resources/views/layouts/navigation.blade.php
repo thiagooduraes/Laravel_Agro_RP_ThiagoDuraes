@@ -21,6 +21,11 @@
                         {{ __('Usuários') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('github.index')" :active="request()->routeIs('github.index')">
+                        {{ __('GitHub') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
