@@ -7,26 +7,19 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::all();
         return view('users.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Cria novo usuário
     public function create()
     {
         return view('users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Grava o novo usuário
     public function store(Request $request)
     {
         $request->validate([
@@ -49,27 +42,20 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Mostra o usuário
     public function show(string $id)
     {
         $user = User::findOrFail($id);
         return view('users.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Altera o usuário
     public function update(Request $request, string $id)
     {
         $user = User::findOrFail($id);
@@ -83,9 +69,7 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Exclui o usuário
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);

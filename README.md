@@ -51,24 +51,38 @@ Na tela "GitHub" é possível excluir o perfil selecionado.
 
 Foram observadas validações, possíveis erros e duplicatas, além de confirmações antes de excluir dados do banco
 
+## Configurações do ambiente
+
+● PHP 8.1.31
+
+● Banco de dados Mysql
+
+● Laravel 10.48.25
 
 ## Utilização
 
-Para simplificar o uso do sistema, foi utilizado o Docker durante a implementação, sendo necessário que o Docker esteja instalado no ambiente.
+● Para simplificar o uso do sistema, foi utilizado o Docker durante a implementação, sendo necessário que o Docker esteja instalado no ambiente.
 
-Após clonar o repositório, basta executar o comando do docker para iniciar o container:
+● Foi utilizado o Docker na versão 4.34.3. A versão mais recente pode ser obtido através do site:
 
-    docker-compose up
+    https://www.docker.com/products/docker-desktop/
 
-Com o container em execução, é necessário executar as migrações do banco:
+● Após clonar o repositório e certificar de que o docker esteja em execução, basta executar os comando abaixo para inicializar e popular o sistema:
+
+    docker-compose up -d
+
+* Com o container em execução, é necessário executar as migrações do banco:
 
     docker-compose exec app php artisan migrate
 
-Para efeito de teste, foi criado um arquivo de Seeds para popular a tabela de usuários com usuários de exemplo. Caso o usuário do sistema deseje executar esse seeder, use o comando:
+* Para efeito de teste, foi criado um arquivo de Seeds para popular a tabela de usuários com usuários de exemplo. Caso o usuário do sistema deseje executar esse seeder, use o comando:
 
     docker-compose exec app php artisan db:seed --class=UserSeeder
 
-Após a migração e uma possível população do banco, a inicialização do servidor se dá com o comando:
+* Após a migração e uma possível população do banco, a inicialização do servidor se dá com o comando:
 
     docker-compose exec app php artisan serve --host=0.0.0.0
 
+* O sistema pode ser acessado pelo link
+
+    localhost:8000/login

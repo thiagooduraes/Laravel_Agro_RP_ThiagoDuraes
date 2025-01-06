@@ -23,6 +23,7 @@ class GithubController extends Controller
         return view('github.index', compact('profiles'));
     }
 
+    // Busca o perfil do GitHub com base no username
     private function getGithubProfile($username)
     {
         $response = Http::get("https://api.github.com/users/{$username}");
@@ -48,6 +49,7 @@ class GithubController extends Controller
         return view('github.create');
     }
 
+    // Grava o perfil do GitHub na tabela
     public function store(Request $request)
     {
         $request->validate([
@@ -86,6 +88,7 @@ class GithubController extends Controller
         return redirect()->route('github.index');
     }
 
+    // Altera o perfil do GitHub
     public function update(Request $request, string $id)
     {
         $github = Github::findOrFail($id);
@@ -105,6 +108,7 @@ class GithubController extends Controller
         return redirect()->route('github.index')->with('success', 'Perfil atualizado com sucesso.');
     }
 
+    // Mostra o perfil do GitHub
     public function show($id)
     {
         $adminEmail = auth()->user()->email;
@@ -114,6 +118,7 @@ class GithubController extends Controller
         return view('github.show', compact('profile'));
     }
 
+    // Exclui o perfil do GitHub
     public function destroy(string $id)
     {
         $profile = Github::findOrFail($id);

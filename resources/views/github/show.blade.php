@@ -1,4 +1,3 @@
-<!-- resources/views/github/show.blade.php -->
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -11,12 +10,6 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-2xl font-bold">{{ $profile->login }} - Perfil Completo</h1>
-                        <!-- <p><strong>{{ __('Nome') }}:</strong> {{ $profile->name }}</p>
-                        <p><strong>{{ __('Empresa') }}:</strong> {{ $profile->company }}</p>
-                        <p><strong>{{ __('Bio') }}:</strong> {{ $profile->bio }}</p>
-                        <p><strong>{{ __('Localização') }}:</strong> {{ $profile->location }}</p>
-                        <p><strong>{{ __('Blog') }}:</strong> <a href="{{ $profile->blog }}" class="text-blue-500">{{ $profile->blog }}</a></p>
-                        <p><strong>{{ __('Repositórios Públicos') }}:</strong> {{ $profile->public_repos }}</p> -->
 
                     <form method="POST" action="{{ route('github.update', $profile->id) }}">
                         <div class="mt-4">

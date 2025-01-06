@@ -13,7 +13,6 @@
                         @csrf
                         @method('PUT')
                         
-                        <!-- Nome -->
                         <div>
                             <label for="name" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
                                 {{ __('Nome') }}
@@ -21,8 +20,6 @@
                             <input id="name" type="text" name="name" value="{{ old('name', $user->name) }}" required autofocus
                                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-sm mt-1 block w-full">
                         </div>
-
-                        <!-- Email -->
                         <div class="mt-4">
                             <label for="email" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
                                 {{ __('Email') }}
@@ -30,8 +27,6 @@
                             <input id="email" type="email" name="email" value="{{ old('email', $user->email) }}" required
                                    class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-md shadow-sm mt-1 block w-full">
                         </div>
-
-                        <!-- Botões -->
                         <div class="mt-6 flex justify-end space-x-4">
                             <form action="{{ route('users.index') }}" method="GET">
                                 <button type="submit"
