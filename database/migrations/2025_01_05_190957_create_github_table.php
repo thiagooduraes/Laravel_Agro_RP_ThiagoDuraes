@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('login');
             $table->string('name')->nullable();
+            $table->string('company')->nullable();
             $table->text('bio')->nullable();
             $table->string('location')->nullable();
             $table->string('blog')->nullable();
-            $table->string('twitter_username')->nullable();
             $table->integer('public_repos')->nullable();
             $table->string('avatar_url')->nullable();
             $table->string('admin_email');

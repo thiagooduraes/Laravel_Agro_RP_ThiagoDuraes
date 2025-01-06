@@ -46,6 +46,23 @@
                                             </svg>
                                             {{ __('Ver Detalhes') }}
                                         </a>
+                                        <div class="ml-10">
+                                            <form action="{{ route('github.destroy', $profile->id) }}" method="POST"
+                                                onsubmit="return confirm('Tem certeza que deseja excluir este perfil?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" 
+                                                        class="text-red-500 hover:underline flex items-center bg-transparent border-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                                        class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" 
+                                                            d="M6 4a1 1 0 00-.894.553L4.382 6H3a1 1 0 100 2h14a1 1 0 100-2h-1.382l-.724-1.447A1 1 0 0014 4H6zm2 5a1 1 0 00-1 1v5a1 1 0 102 0v-5a1 1 0 00-1-1zm5 0a1 1 0 10-2 0v5a1 1 0 102 0v-5z" 
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                    {{ __('Excluir') }}
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </li>
                             @endforeach

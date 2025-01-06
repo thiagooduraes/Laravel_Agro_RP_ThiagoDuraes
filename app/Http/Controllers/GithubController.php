@@ -53,6 +53,7 @@ class GithubController extends Controller
         $request->validate([
             'username' => 'required|string|max:255',
             'name' => 'nullable|string|max:255',
+            'company' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
             'location' => 'nullable|string',
             'blog' => 'nullable|string',
@@ -73,6 +74,7 @@ class GithubController extends Controller
         $github = new Github();
         $github->login = $request->input('username');
         $github->name = $request->input('name');
+        $github->company = $request->input('company');
         $github->bio = $request->input('bio');
         $github->location = $request->input('location');
         $github->blog = $request->input('blog');
@@ -84,6 +86,25 @@ class GithubController extends Controller
         return redirect()->route('github.index');
     }
 
+    public function update(Request $request, string $id)
+    {
+        $github = Github::findOrFail($id);
+        $request->validate([
+            'username' => 'required|string|max:255',
+            'name' => 'nullable|string|max:255',
+            'company' => 'nullable|string|max:255',
+            'bio' => 'nullable|string',
+            'location' => 'nullable|string',
+            'blog' => 'nullable|string',
+            'public_repos' => 'nullable|integer',
+            'avatar_url' => 'nullable|url',
+        ]);
+
+        $github->update($request->all());
+
+        return redirect()->route('github.index')->with('success', 'Perfil atualizado com sucesso.');
+    }
+
     public function show($id)
     {
         $adminEmail = auth()->user()->email;
@@ -91,5 +112,12 @@ class GithubController extends Controller
                          ->where('admin_email', $adminEmail)
                          ->firstOrFail();
         return view('github.show', compact('profile'));
+    }
+
+    public function destroy(string $id)
+    {
+        $profile = Github::findOrFail($id);
+        $profile->delete();
+        return redirect()->route('github.index')->with('success', 'Perfil excluído com sucesso.');
     }
 }

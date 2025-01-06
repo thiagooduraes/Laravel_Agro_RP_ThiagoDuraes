@@ -31,13 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/github', [GithubController::class, 'index'])->name('github.index');
-    Route::get('/github/create', [GithubController::class, 'create'])->name('github.create');
     Route::get('/github/search', [GithubController::class, 'search'])->name('github.search');
-    Route::post('/github', [GithubController::class, 'store'])->name('github.store');
-    Route::get('/github/{id}', [GithubController::class, 'show'])->name('github.show');
+    
 });
 
 Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('github', GithubController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';

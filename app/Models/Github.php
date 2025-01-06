@@ -15,11 +15,11 @@ class Github extends Model
         'admin_email',
         'login',
         'name',
+        'company',
         'avatar_url',
         'bio',
         'location',
         'blog',
-        'twitter_username',
         'public_repos',
     ];
 

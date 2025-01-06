@@ -40,6 +40,10 @@
                                         <input type="text" name="name" id="name" value="{{ $githubData['name'] ?? 'N/A' }}" class="mt-2 px-4 py-2 border rounded w-full text-gray-700">
                                     </div>
                                     <div class="mb-4">
+                                        <label for="company" class="block text-sm font-medium text-white">{{ __('Empresa') }}</label>
+                                        <input type="text" name="company" id="company" value="{{ $githubData['company'] ?? 'N/A' }}" class="mt-2 px-4 py-2 border rounded w-full text-gray-700">
+                                    </div>
+                                    <div class="mb-4">
                                         <label for="bio" class="block text-sm font-medium text-white">{{ __('Bio') }}</label>
                                         <textarea name="bio" id="bio" class="mt-2 px-4 py-2 border rounded w-full text-gray-700">{{ $githubData['bio'] ?? 'N/A' }}</textarea>
                                     </div>
@@ -59,9 +63,12 @@
                                         <label for="avatar_url" class="block text-sm font-medium text-white">{{ __('Avatar URL') }}</label>
                                         <input type="text" name="avatar_url" id="avatar_url" value="{{ $githubData['avatar_url'] ?? 'N/A' }}" class="mt-2 px-4 py-2 border rounded w-full text-gray-700">
                                     </div>
-                                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-                                        {{ __('Salvar Perfil') }}
-                                    </button>
+                                    <div class="mt-6 flex justify-end space-x-4">
+                                        <button type="submit"
+                                                class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700">
+                                            {{ __('Salvar') }}
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
