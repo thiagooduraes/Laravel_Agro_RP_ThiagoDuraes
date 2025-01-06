@@ -5,42 +5,70 @@ Desafio Backend
 
 Desafio de implementação de ferramenta de busca de usuários do GitHub.
 
-Requisitos:
+## Requisitos:
 
 ● Criar uma interface de autenticação:
     
-    Foi utilizada a interface do Laravel Breeze, onde é possível fazer o login no sistema ou criar um novo usuário. Há também a opção de manter conectado ("Remember me"). A opção de recuperação de senha não foi implementada, mantendo o padrão do framework.
+Foi utilizada a interface do Laravel Breeze, onde é possível fazer o login no sistema ou criar um novo usuário. Há também a opção de manter conectado ("Remember me"). A opção de recuperação de senha não foi implementada, mantendo o padrão do framework.
 
-    O usuário que utilizei para testes foi:
-        Email: thiagooduraes@gmail.com
-        Senha: admin123
+O usuário que utilizei para testes foi:
+
+    Email: thiagooduraes@gmail.com
+    Senha: admin123
+
+Os demais usuários inseridos pelo arquivo de seeds usam a senha
+
+    12345678
+
 
 ● Cadastro/Edição/Remoção de admins para acesso ao sistema;
 
-    Após logar no sistema, há a opção de entrar nas áreas de "Usuários" ou "GitHub". Na área de usuários, é apresentada uma lista dos usuários cadastrados no sistema, com as opções de cadastrar um novo usuário ou editar/excluir um usuário.
+Após logar no sistema, há a opção de entrar nas áreas de "Usuários" ou "GitHub". Na área de usuários, é apresentada uma lista dos usuários cadastrados no sistema, com as opções de cadastrar um novo usuário ou editar/excluir um usuário.
 
 ● Buscar usuários na API do GitHub com base no username;
 
-    Na área "GitHub", na opção "Novo Perfil" (parte superior direita do formulário) é possível buscar um perfil do GitHub, apresentando as informações retornadas pela API.
+Na área "GitHub", na opção "Novo Perfil" (parte superior direita do formulário) é possível buscar um perfil do GitHub, apresentando as informações retornadas pela API.
 
 ● Montar uma lista com os usuários buscados (persistindo a lista em banco de dados);
 
-    Ao "Salvar", o usuário apresentado é persistido no banco de dados, ligado ao usuário logado.
+Ao "Salvar", o usuário apresentado é persistido no banco de dados, ligado ao usuário logado.
 
 ● Cada admin “logado” tem acesso apenas a sua lista cadastrada;
 
-    Na tela "GitHub" são apresentados os perfis do GitHub salvos pelo usuário logado. Somente são apresentados os perfis relacionados com o usuário atual.
+Na tela "GitHub" são apresentados os perfis do GitHub salvos pelo usuário logado. Somente são apresentados os perfis relacionados com o usuário atual.
 
 ● Ao acessar um usuário da lista, abrir uma tela com detalhamento, onde precisa-se
 mostrar as informações retornadas da API;
 
-    Clicando em "Ver Detalhes", é possível ver as informações do perfil selecionado salvas no banco
+Clicando em "Ver Detalhes", é possível ver as informações do perfil selecionado salvas no banco
 
 ● Remover/Editar usuários da lista;
 
-    Na opção de "Ver Detalhes", é possível editar as informações do perfil aberto.
-    Na tela "GitHub" é possível excluir o perfil selecionado.
+Na opção de "Ver Detalhes", é possível editar as informações do perfil aberto.
+Na tela "GitHub" é possível excluir o perfil selecionado.
 
 ● Atenção a tratamento de erros, validações, duplicatas e etc;
 
-    Foram observadas validações, possíveis erros e duplicatas, além de confirmações antes de excluir dados do banco
+Foram observadas validações, possíveis erros e duplicatas, além de confirmações antes de excluir dados do banco
+
+
+## Utilização
+
+Para simplificar o uso do sistema, foi utilizado o Docker durante a implementação, sendo necessário que o Docker esteja instalado no ambiente.
+
+Após clonar o repositório, basta executar o comando do docker para iniciar o container:
+
+    docker-compose up
+
+Com o container em execução, é necessário executar as migrações do banco:
+
+    docker-compose exec app php artisan migrate
+
+Para efeito de teste, foi criado um arquivo de Seeds para popular a tabela de usuários com usuários de exemplo. Caso o usuário do sistema deseje executar esse seeder, use o comando:
+
+    docker-compose exec app php artisan db:seed --class=UserSeeder
+
+Após a migração e uma possível população do banco, a inicialização do servidor se dá com o comando:
+
+    docker-compose exec app php artisan serve --host=0.0.0.0
+
