@@ -73,16 +73,16 @@ Foram observadas validações, possíveis erros e duplicatas, além de confirma�
 
 * Com o container em execução, é necessário executar as migrações do banco:
 
-    docker-compose exec app php artisan migrate
+        docker-compose exec app php artisan migrate
 
 * Para efeito de teste, foi criado um arquivo de Seeds para popular a tabela de usuários com usuários de exemplo. Caso o usuário do sistema deseje executar esse seeder, use o comando:
 
-    docker-compose exec app php artisan db:seed --class=UserSeeder
+        docker-compose exec app php artisan db:seed --class=UserSeeder
 
 * Após a migração e uma possível população do banco, a inicialização do servidor se dá com o comando:
 
-    docker-compose exec app php artisan serve --host=0.0.0.0
+        docker-compose exec app php artisan serve --host=0.0.0.0
 
 * O sistema pode ser acessado pelo link
 
-    localhost:8000/login
+        localhost:8000/login
